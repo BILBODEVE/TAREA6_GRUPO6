@@ -69,6 +69,18 @@ public class VentanaAgregarPersona extends JFrame {
 	public JButton getBtnAceptar() {
 		return btnAceptar;
 	}
+	
+	public JTextField getTxtNombre() {
+	    return txtNombre;
+	}
+
+	public JTextField getTxtApellido() {
+	    return txtApellido;
+	}
+
+	public JTextField getTxtDni() {
+	    return txtDni;
+	}
 
 	public void setBtnAceptar(JButton btnAceptar) {
 		this.btnAceptar = btnAceptar;

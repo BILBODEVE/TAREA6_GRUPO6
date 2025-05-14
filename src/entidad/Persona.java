@@ -3,15 +3,15 @@ package entidad;
 public class Persona {
 	private String nombre;
 	private String apellido;
-	private int DNI;
+	private String DNI;
 
 	public Persona() {
 	}
 
-	public Persona(String nombre, String apellido, int dNI) {
+	public Persona(String nombre, String apellido, String DNI) {
 		this.nombre = nombre;
 		this.apellido = apellido;
-		DNI = dNI;
+		this.DNI = DNI;
 	}
 
 	public String getNombre() {
@@ -30,12 +30,12 @@ public class Persona {
 		this.apellido = apellido;
 	}
 
-	public int getDNI() {
+	public String getDNI() {
 		return DNI;
 	}
 
-	public void setDNI(int dNI) {
-		DNI = dNI;
+	public void setDNI(String DNI) {
+		this.DNI = DNI;
 	}
 
 	@Override
