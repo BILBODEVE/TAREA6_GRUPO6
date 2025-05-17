@@ -46,10 +46,17 @@ public class ControladorAgregar implements ActionListener {
         String nombre = ventanaAgregarPersona.getTxtNombre().getText();
         String apellido = ventanaAgregarPersona.getTxtApellido().getText();
         String dni = ventanaAgregarPersona.getTxtDni().getText();
+        PersonaNegocioImpl pni= new PersonaNegocioImpl();
+        
 
         if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty()) {
             JOptionPane.showMessageDialog(ventanaAgregarPersona, "Todos los campos son obligatorios.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
+        }
+        
+        if(pni.verificarPersonaExiste(dni)) {
+        	JOptionPane.showMessageDialog(ventanaAgregarPersona, "El DNI ingresado ya se encuentra registrado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        	return;
         }
 
         Persona persona = new Persona();

@@ -30,4 +30,14 @@ public boolean update(Persona persona) {
 		}
 		return estado;
 	}
+
+public boolean verificarPersonaExiste(String dni) {
+	
+	PersonaDaoImpl pdi= new PersonaDaoImpl();
+	Persona p=pdi.obtenerPersona(dni);
+	if(p==null) {
+		return false;
+	}
+	return true;
+}
 }

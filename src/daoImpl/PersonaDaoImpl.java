@@ -1,7 +1,9 @@
 package daoImpl;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dao.PersonaDao;
@@ -11,6 +13,7 @@ public class PersonaDaoImpl implements PersonaDao
 {
 	private static final String insert = "INSERT INTO Personas(Nombre, Apellido,Dni) VALUES(?, ?, ?)";
 	private static final String update = "UPDATE Personas SET Nombre = ?, Apellido = ? WHERE Dni = ?";
+	private static final String select= "SELECT DNI, Nombre, Apellido FROM personas where dni= ?;";
 
 	@Override
 	public boolean insert(Persona persona)
@@ -74,4 +77,33 @@ public class PersonaDaoImpl implements PersonaDao
 		return isUpdateExitoso;
 	}
 	
+	@Override
+	public Persona obtenerPersona(String dni) {
+		
+		PreparedStatement st;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		Persona p= null;
+		
+		try 
+		{
+			st = conexion.prepareStatement(select);
+			st.setString(1, dni);
+			
+			ResultSet rs= st.executeQuery();
+			if (rs.next()) {
+				p= new Persona();
+			    p.setDNI(rs.getString("DNI"));
+			    p.setNombre(rs.getString("Nombre"));
+			    p.setApellido(rs.getString("Apellido"));
+			    
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return p;		
+	}
+
 }
