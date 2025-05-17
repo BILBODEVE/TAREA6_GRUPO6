@@ -1,12 +1,13 @@
 package presentancion.vista;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 
 public class VentanaAgregarPersona extends JFrame {
@@ -50,16 +51,40 @@ public class VentanaAgregarPersona extends JFrame {
 		txtNombre.setBounds(210, 54, 96, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
+		txtNombre.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				if (!Character.isLetter(c) && c != ' ' || txtNombre.getText().length() >= 45) {
+					e.consume(); // Con esto ignora el caracter si no cumple las condiciones necesarias
+				}
+			}
+		});
 		
 		txtApellido = new JTextField();
 		txtApellido.setBounds(210, 95, 96, 20);
 		contentPane.add(txtApellido);
 		txtApellido.setColumns(10);
+		txtApellido.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				if (!Character.isLetter(c) && c != ' ' || txtApellido.getText().length() >= 45) {
+					e.consume();
+				}
+			}
+		});
 		
 		txtDni = new JTextField();
 		txtDni.setBounds(210, 137, 96, 20);
 		contentPane.add(txtDni);
 		txtDni.setColumns(10);
+		txtDni.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				if (!Character.isDigit(c) || txtDni.getText().length() >= 20) {
+					e.consume();
+				}
+			}
+		});
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(135, 182, 89, 23);

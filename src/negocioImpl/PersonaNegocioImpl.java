@@ -20,4 +20,14 @@ public class PersonaNegocioImpl implements PersonaNegocio{
 		return estado;
 	}
 
+	
+public boolean update(Persona persona) {
+		
+		boolean estado=false;
+		if(persona.getNombre().trim().length()>0 && persona.getApellido().trim().length()>0 && persona.getDNI().trim().length()>0)
+		{
+			estado=pdao.update(persona);
+		}
+		return estado;
+	}
 }

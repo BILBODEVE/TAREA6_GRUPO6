@@ -72,9 +72,6 @@ public class VentanaPrincipal {
 		return mnitemModificar;
 	}
 
-	public void setMnitemModificar(JMenuItem mnitemModificar) {
-		this.mnitemModificar = mnitemModificar;
-	}
 
 	public JMenuItem getMnitemEliminar() {
 		return mnitemEliminar;

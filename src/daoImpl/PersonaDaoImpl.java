@@ -9,7 +9,8 @@ import entidad.Persona;
 
 public class PersonaDaoImpl implements PersonaDao
 {
-	private static final String insert = "INSERT INTO personas(nombre, apellido,DNI) VALUES(?, ?, ?)";
+	private static final String insert = "INSERT INTO Personas(Nombre, Apellido,Dni) VALUES(?, ?, ?)";
+	private static final String update = "UPDATE Personas SET Nombre = ?, Apellido = ? WHERE Dni = ?";
 
 	@Override
 	public boolean insert(Persona persona)
@@ -42,4 +43,35 @@ public class PersonaDaoImpl implements PersonaDao
 		return isInsertExitoso;
 	}
 
+	
+	public boolean update(Persona persona)
+	{
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean isUpdateExitoso = false;
+		try
+		{
+			statement = conexion.prepareStatement(update);
+			statement.setString(1, persona.getNombre());
+			statement.setString(2, persona.getApellido());
+			statement.setString(3, persona.getDNI());
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				isUpdateExitoso = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+			try {
+				conexion.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		return isUpdateExitoso;
+	}
+	
 }

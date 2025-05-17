@@ -3,26 +3,29 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import entidad.Persona;
 import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
 
 import presentancion.vista.VentanaAgregarPersona;
+import presentancion.vista.VentanaModificar;
 import presentancion.vista.VentanaPrincipal;
 
-public class Controlador implements ActionListener {
+public class ControladorAgregar implements ActionListener {
 	
 	private VentanaPrincipal ventanaPrincipal;
 	private VentanaAgregarPersona ventanaAgregarPersona;
 	private PersonaNegocio personaNegocio = new PersonaNegocioImpl();
+	private DefaultListModel<Persona> listaPersonas;
 
 	
-	public Controlador(VentanaPrincipal vPrincipal) {
-	
-		ventanaPrincipal= vPrincipal;		
+	public ControladorAgregar(VentanaPrincipal vPrincipal, DefaultListModel<Persona> listaPersonas) {
+        this.ventanaPrincipal = vPrincipal;
+        this.listaPersonas = listaPersonas;		
 		ventanaPrincipal.getMnitemAgregar().addActionListener(a->EventoClickMenu_AgregarPersona(a));
-		
 	}	
 
 	public void EventoClickMenu_AgregarPersona(ActionEvent a) {
@@ -64,8 +67,7 @@ public class Controlador implements ActionListener {
         }
     }
 	
-	
-	
+
 	public void inicializar()
 	{
 		ventanaPrincipal.setVisible(true);;

@@ -1,14 +1,11 @@
 package main;
 
-import presentacion.controlador.Controlador;
-import presentancion.vista.VentanaPrincipal;
+import presentacion.controlador.ControladorGeneral;
 
 public class Principal {
 
 	public static void main(String[] args) {
-		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-		Controlador controlador= new Controlador(ventanaPrincipal);
-		controlador.inicializar();
+		new ControladorGeneral();
 	}
 		
 }
