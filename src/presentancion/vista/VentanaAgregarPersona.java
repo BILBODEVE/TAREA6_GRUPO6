@@ -4,10 +4,16 @@ package presentancion.vista;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dominio.Pelicula;
+import entidad.Persona;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class VentanaAgregarPersona extends JFrame {
@@ -22,6 +28,8 @@ public class VentanaAgregarPersona extends JFrame {
 	private JTextField txtApellido;
 	private JTextField txtDni;
 	private JButton btnAceptar;
+	
+	private DefaultListModel<Persona> listModelPersona = new DefaultListModel<Persona>();
 
 	private VentanaAgregarPersona() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

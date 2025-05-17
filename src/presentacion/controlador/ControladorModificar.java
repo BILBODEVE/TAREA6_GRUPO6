@@ -88,18 +88,10 @@ public class ControladorModificar implements ActionListener{
 		ventanaPrincipal.setVisible(true);;
 	}
 	
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	private void limpiarCampos() {
-        ventanaModificar.getTxtNombre().setText("");
-        ventanaModificar.getTxtApellido().setText("");
-        ventanaModificar.getTxtDni().setText("");
-    }
-
 
 }
