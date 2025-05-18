@@ -14,6 +14,7 @@ public class ControladorGeneral {
 	private ControladorAgregar controladorAgregar;
 	private ControladorModificar controladorModificar;
 	private ControladorEliminar controladorEliminar;
+	private ControladorListar controladorListar;
 
 	public ControladorGeneral() {
 		ventanaPrincipal = new VentanaPrincipal();
@@ -21,6 +22,7 @@ public class ControladorGeneral {
 		controladorAgregar = new ControladorAgregar(ventanaPrincipal);
 		controladorModificar = new ControladorModificar(ventanaPrincipal);
 		controladorEliminar = new ControladorEliminar(ventanaPrincipal);
+		controladorListar = new ControladorListar(ventanaPrincipal);
 
 		inicializar();
 	}

@@ -16,7 +16,6 @@ public class ControladorAgregar implements ActionListener {
 	private VentanaPrincipal ventanaPrincipal;
 	private VentanaAgregarPersona ventanaAgregarPersona;
 	private PersonaNegocio personaNegocio = new PersonaNegocioImpl();
-	private ArrayList<Persona> listaPersonas;
 
 	public ControladorAgregar(VentanaPrincipal vPrincipal) {
 		this.ventanaPrincipal = vPrincipal;

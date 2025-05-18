@@ -7,20 +7,20 @@ import javax.swing.JOptionPane;
 import entidad.Persona;
 import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
-import presentancion.vista.VentanaModificar;
+import presentancion.vista.VentanaModificarPersona;
 import presentancion.vista.VentanaPrincipal;
 
 public class ControladorModificar implements ActionListener {
 	private VentanaPrincipal ventanaPrincipal;
-	private VentanaModificar ventanaModificar;
+	private VentanaModificarPersona ventanaModificar;
 	private ArrayList<Persona> listaPersonas;
 	private PersonaNegocio personaNegocio = new PersonaNegocioImpl();
 
 	public ControladorModificar(VentanaPrincipal ventanaPrincipal) {
 		this.ventanaPrincipal = ventanaPrincipal;
-		this.ventanaModificar = VentanaModificar.getInstancia();
+		ventanaModificar = VentanaModificarPersona.getInstancia();
 		ventanaPrincipal.getMnitemModificar().addActionListener(e -> {
-			ventanaModificar.setVisible(true); // o ventanaModificar.setVisible(true);
+			ventanaModificar.setVisible(true);
 			cargarModal();
 		});
 
@@ -33,7 +33,6 @@ public class ControladorModificar implements ActionListener {
 			if (!e.getValueIsAdjusting()) {
 				Persona personaSeleccionada = ventanaModificar.getListaPersonas().getSelectedValue();
 				if (personaSeleccionada != null) {
-					ventanaModificar.setPersonaSeleccionada(personaSeleccionada);
 					cargarDatosPersona(personaSeleccionada);
 				}
 			}

@@ -12,9 +12,9 @@ import entidad.Persona;
 public class PersonaDaoImpl implements PersonaDao {
 	private static final String insert = "INSERT INTO Personas(Nombre, Apellido,Dni) VALUES(?, ?, ?)";
 	private static final String update = "UPDATE Personas SET Nombre = ?, Apellido = ? WHERE Dni = ?";
-	private static final String select = "SELECT DNI, Nombre, Apellido FROM personas where dni= ?;";
-	private static final String delete = "DELETE FROM personas WHERE Nombre= ? AND Apellido= ? AND Dni= ?";
-	private static final String selectAll = "SELECT * FROM personas";
+	private static final String select = "SELECT DNI, Nombre, Apellido FROM Personas where dni= ?;";
+	private static final String delete = "DELETE FROM Personas WHERE Nombre= ? AND Apellido= ? AND Dni= ?";
+	private static final String selectAll = "SELECT * FROM Personas";
 
 	@Override
 	public boolean insert(Persona persona) {

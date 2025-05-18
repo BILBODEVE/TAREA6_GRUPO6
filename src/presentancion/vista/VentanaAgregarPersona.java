@@ -27,6 +27,7 @@ public class VentanaAgregarPersona extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setResizable(false);
+		setLocationRelativeTo(null); //centra la ventana
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

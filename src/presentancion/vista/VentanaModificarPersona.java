@@ -1,5 +1,6 @@
 package presentancion.vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -15,30 +16,31 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import entidad.Persona;
 
-public class VentanaModificar extends JFrame {
+public class VentanaModificarPersona extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private static VentanaModificar instancia;
+	private static VentanaModificarPersona instancia;
 	private JPanel contentPane;
 	private JLabel lblTitulo;
 	private JList<Persona> listPersonas;
 	private DefaultListModel<Persona> listModelPersona;
 	private JScrollPane scrollPane;
-	private Persona personaSeleccionada;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtDni;
 	private JButton btnModificar;
 
-	public VentanaModificar() {
+	public VentanaModificarPersona() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setResizable(false);
+		setLocationRelativeTo(null); // centra la ventana
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setLayout(null);
 		setBounds(0, 0, 400, 400);
+		
 		agregarControles();
 	}
 
@@ -88,14 +90,8 @@ public class VentanaModificar extends JFrame {
 		txtDni.setBounds(231, 291, 96, 20);
 		contentPane.add(txtDni);
 		txtDni.setColumns(10);
-		txtDni.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if (!Character.isDigit(c) || txtDni.getText().length() >= 20) {
-					e.consume();
-				}
-			}
-		});
+		txtDni.setEditable(false);
+		txtDni.setBackground(Color.WHITE);
 
 		btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(279, 331, 89, 23);
@@ -118,10 +114,6 @@ public class VentanaModificar extends JFrame {
 		return listPersonas.getSelectedValue();
 	}
 
-	public void setPersonaSeleccionada(Persona persona) {
-		this.personaSeleccionada = persona;
-	}
-
 	public JList<Persona> getListaPersonas() {
 		return listPersonas;
 	}
@@ -142,10 +134,10 @@ public class VentanaModificar extends JFrame {
 		super.setVisible(state);
 	}
 
-	public static VentanaModificar getInstancia() {
+	public static VentanaModificarPersona getInstancia() {
 		if (instancia == null || !instancia.isDisplayable()) {
 			try {
-				instancia = new VentanaModificar();
+				instancia = new VentanaModificarPersona();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

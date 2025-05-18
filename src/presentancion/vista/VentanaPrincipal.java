@@ -10,10 +10,9 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaPrincipal {
+public class VentanaPrincipal extends JFrame{
 
 	private static final long serialVersionUID = 1L;
-	private JFrame ventana;
 	private JPanel panel;
 	private JMenuBar menuBar;
 	private JMenu jmenuPersona;
@@ -24,16 +23,16 @@ public class VentanaPrincipal {
 	private JLabel lblTitulo;
 	
 	public VentanaPrincipal() {
-		ventana = new JFrame();
-		ventana.setTitle("Agenda");
-		ventana.setBounds(100, 100, 450, 300);
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.getContentPane().setLayout(null);
-		ventana.setResizable(false);
+		setTitle("Agenda");
+		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
+		setResizable(false);
+		setLocationRelativeTo(null); //centra la ventana
 
 		panel = new JPanel();
 		panel.setBounds(0, 0, 434, 261);
-		ventana.getContentPane().add(panel);
+		getContentPane().add(panel);
 		panel.setLayout(null);
 
 		menuBar = new JMenuBar();
@@ -91,6 +90,6 @@ public class VentanaPrincipal {
 	}
 
 	public void setVisible(boolean state) {
-		this.ventana.setVisible(state);
+		super.setVisible(state);
 	}
 }

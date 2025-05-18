@@ -20,7 +20,7 @@ public class ControladorEliminar implements ActionListener {
 
 	public ControladorEliminar(VentanaPrincipal ventanaPrincipal) {
 		this.ventanaPrincipal = ventanaPrincipal;
-		this.ventanaEliminarPersona = VentanaEliminarPersona.getInstancia();
+		ventanaEliminarPersona = VentanaEliminarPersona.getInstancia();
 
 		ventanaPrincipal.getMnitemEliminar().addActionListener(a -> EventoClickMenu_EliminarPersona(a));
 
