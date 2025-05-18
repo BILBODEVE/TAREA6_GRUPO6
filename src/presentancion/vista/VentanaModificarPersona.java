@@ -31,15 +31,13 @@ public class VentanaModificarPersona extends JFrame {
 
 	public VentanaModificarPersona() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 350);
 		setResizable(false);
 		setLocationRelativeTo(null); // centra la ventana
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		getContentPane().setLayout(null);
-		setBounds(0, 0, 400, 400);
 		
 		agregarControles();
 	}
@@ -61,7 +59,7 @@ public class VentanaModificarPersona extends JFrame {
 		listPersonas.setLayoutOrientation(JList.VERTICAL);
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(10, 291, 96, 20);
+		txtNombre.setBounds(10, 232, 96, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		txtNombre.addKeyListener(new KeyAdapter() {
@@ -74,7 +72,7 @@ public class VentanaModificarPersona extends JFrame {
 		});
 
 		txtApellido = new JTextField();
-		txtApellido.setBounds(122, 291, 96, 20);
+		txtApellido.setBounds(128, 232, 96, 20);
 		contentPane.add(txtApellido);
 		txtApellido.setColumns(10);
 		txtApellido.addKeyListener(new KeyAdapter() {
@@ -87,14 +85,14 @@ public class VentanaModificarPersona extends JFrame {
 		});
 
 		txtDni = new JTextField();
-		txtDni.setBounds(231, 291, 96, 20);
+		txtDni.setBounds(248, 232, 96, 20);
 		contentPane.add(txtDni);
 		txtDni.setColumns(10);
 		txtDni.setEditable(false);
 		txtDni.setBackground(Color.WHITE);
 
 		btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(279, 331, 89, 23);
+		btnModificar.setBounds(373, 231, 89, 23);
 		contentPane.add(btnModificar);
 	}
 

@@ -37,9 +37,7 @@ public class VentanaListarPersona extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		getContentPane().setLayout(null);
-		setBounds(0, 0, 400, 400);
-		agregarControles();
+		
 		
         modeloTabla = new DefaultTableModel(null, columnas) {
 			@Override
@@ -51,6 +49,8 @@ public class VentanaListarPersona extends JFrame{
         tablaPersonas = new JTable(modeloTabla);
         JScrollPane scrollPane = new JScrollPane(tablaPersonas);
         contentPane.add(scrollPane, BorderLayout.CENTER);
+        
+        agregarControles();
 	}
 
 	private void agregarControles() {
