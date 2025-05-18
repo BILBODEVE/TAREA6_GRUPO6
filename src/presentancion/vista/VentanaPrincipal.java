@@ -29,6 +29,7 @@ public class VentanaPrincipal {
 		ventana.setBounds(100, 100, 450, 300);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.getContentPane().setLayout(null);
+		ventana.setResizable(false);
 
 		panel = new JPanel();
 		panel.setBounds(0, 0, 434, 261);
