@@ -153,13 +153,4 @@ public class VentanaModificar extends JFrame {
 		}
 		return instancia;
 	}
-
-	public void cargarModal(ArrayList<Persona> personas) {
-		listModelPersona.removeAllElements();
-		if (personas != null) {
-			for (Persona persona : personas) {
-				this.listModelPersona.addElement(persona);
-			}
-		}
-	}
 }
