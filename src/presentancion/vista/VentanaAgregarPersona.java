@@ -1,7 +1,6 @@
 package presentancion.vista;
 
-
-import javax.swing.JFrame;	
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import entidad.Persona;
@@ -9,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class VentanaAgregarPersona extends JFrame {
@@ -24,8 +22,6 @@ public class VentanaAgregarPersona extends JFrame {
 	private JTextField txtApellido;
 	private JTextField txtDni;
 	private JButton btnAceptar;
-	
-	private DefaultListModel<Persona> listModelPersona = new DefaultListModel<Persona>();
 
 	private VentanaAgregarPersona() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -35,23 +31,23 @@ public class VentanaAgregarPersona extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		agregarControles();		
+		agregarControles();
 	}
-	
+
 	private void agregarControles() {
-		
+
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(88, 54, 80, 21);
 		contentPane.add(lblNombre);
-		
+
 		lblApellido = new JLabel("Apellido");
 		lblApellido.setBounds(88, 98, 49, 14);
 		contentPane.add(lblApellido);
-		
+
 		lblDni = new JLabel("DNI");
 		lblDni.setBounds(88, 140, 49, 14);
 		contentPane.add(lblDni);
-		
+
 		txtNombre = new JTextField();
 		txtNombre.setBounds(210, 54, 96, 20);
 		contentPane.add(txtNombre);
@@ -64,7 +60,7 @@ public class VentanaAgregarPersona extends JFrame {
 				}
 			}
 		});
-		
+
 		txtApellido = new JTextField();
 		txtApellido.setBounds(210, 95, 96, 20);
 		contentPane.add(txtApellido);
@@ -77,7 +73,7 @@ public class VentanaAgregarPersona extends JFrame {
 				}
 			}
 		});
-		
+
 		txtDni = new JTextField();
 		txtDni.setBounds(210, 137, 96, 20);
 		contentPane.add(txtDni);
@@ -90,26 +86,26 @@ public class VentanaAgregarPersona extends JFrame {
 				}
 			}
 		});
-		
+
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(135, 182, 89, 23);
 		contentPane.add(btnAceptar);
 	}
-	
+
 	public JButton getBtnAceptar() {
 		return btnAceptar;
 	}
-	
+
 	public JTextField getTxtNombre() {
-	    return txtNombre;
+		return txtNombre;
 	}
 
 	public JTextField getTxtApellido() {
-	    return txtApellido;
+		return txtApellido;
 	}
 
 	public JTextField getTxtDni() {
-	    return txtDni;
+		return txtDni;
 	}
 
 	public void setBtnAceptar(JButton btnAceptar) {
@@ -119,11 +115,11 @@ public class VentanaAgregarPersona extends JFrame {
 	public void cambiarVisibilidad(boolean state) {
 		super.setVisible(state);
 	}
-	
+
 	public static VentanaAgregarPersona getInstancia() {
-        if (instancia == null || !instancia.isDisplayable()) {
-            instancia = new VentanaAgregarPersona();
-        }
-        return instancia;
-    }
+		if (instancia == null || !instancia.isDisplayable()) {
+			instancia = new VentanaAgregarPersona();
+		}
+		return instancia;
+	}
 }
