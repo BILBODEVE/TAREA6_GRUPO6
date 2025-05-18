@@ -1,18 +1,14 @@
 package presentancion.vista;
 
 
-import javax.swing.JFrame;
+import javax.swing.JFrame;	
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import dominio.Pelicula;
 import entidad.Persona;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
@@ -34,6 +30,7 @@ public class VentanaAgregarPersona extends JFrame {
 	private VentanaAgregarPersona() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
