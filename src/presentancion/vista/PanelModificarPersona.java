@@ -3,6 +3,7 @@ package presentancion.vista;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -39,8 +40,8 @@ public class PanelModificarPersona extends JPanel {
 		scrollPane.setBounds(10, 47, 421, 140);
 		add(scrollPane);
 
-		listModelPersona = new DefaultListModel<Persona>();
-		listPersonas = new JList<Persona>(listModelPersona);
+		listModelPersona = new DefaultListModel<>();
+		listPersonas = new JList<>(listModelPersona);
 		scrollPane.setViewportView(listPersonas);
 		listPersonas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		listPersonas.setLayoutOrientation(JList.VERTICAL);
@@ -50,6 +51,7 @@ public class PanelModificarPersona extends JPanel {
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
 				if (!Character.isLetter(c) && c != ' ' || txtNombre.getText().length() >= 45) {
@@ -63,6 +65,7 @@ public class PanelModificarPersona extends JPanel {
 		add(txtApellido);
 		txtApellido.setColumns(10);
 		txtApellido.addKeyListener(new KeyAdapter() {
+			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
 				if (!Character.isLetter(c) && c != ' ' || txtApellido.getText().length() >= 45) {
@@ -73,16 +76,9 @@ public class PanelModificarPersona extends JPanel {
 
 		txtDni = new JTextField();
 		txtDni.setBounds(222, 221, 96, 20);
+		txtDni.setEditable(false);
 		add(txtDni);
 		txtDni.setColumns(10);
-		txtDni.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if (!Character.isDigit(c) || txtDni.getText().length() >= 20) {
-					e.consume();
-				}
-			}
-		});
 
 		btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(342, 220, 89, 23);

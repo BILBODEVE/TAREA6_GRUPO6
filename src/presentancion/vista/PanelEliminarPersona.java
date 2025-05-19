@@ -1,11 +1,12 @@
 package presentancion.vista;
 
 import java.awt.Font;
-import javax.swing.JPanel;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JButton;
-import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import entidad.Persona;
@@ -33,8 +34,8 @@ public class PanelEliminarPersona extends JPanel {
 		SCPeliminar.setBounds(25, 50, 245, 140);
 		add(SCPeliminar);
 
-		listModelPersona = new DefaultListModel<Persona>();
-		listPersonas = new JList<Persona>(listModelPersona);
+		listModelPersona = new DefaultListModel<>();
+		listPersonas = new JList<>(listModelPersona);
 		SCPeliminar.setRowHeaderView(listPersonas);
 		listPersonas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		listPersonas.setLayoutOrientation(JList.VERTICAL);

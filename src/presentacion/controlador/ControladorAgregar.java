@@ -3,7 +3,9 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
 import entidad.Persona;
 import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
@@ -78,7 +80,7 @@ public class ControladorAgregar implements ActionListener {
 	public void inicializar() {
 		ventanaPrincipal.setVisible(true);
 	}
-	
+
 	public void limpiarTxts() {
 		panelAgregarPersona.getTxtNombre().setText("");
 		panelAgregarPersona.getTxtApellido().setText("");

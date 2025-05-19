@@ -8,14 +8,14 @@ public class Conexion
 {
 	public static Conexion instancia;
 	private Connection connection;
-	
+
 	private Conexion()
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver"); 
+			Class.forName("com.mysql.jdbc.Driver");
 			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpersonas","root","root");
-			//No me borren esto porfa, comentelo porque sino no me funciona. Gracias. 
+			//No me borren esto porfa, comentelo porque sino no me funciona. Gracias.
 			//this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/bdPersonas?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC","root","rootpass");
 			this.connection.setAutoCommit(false);
 		}
@@ -24,10 +24,10 @@ public class Conexion
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public static Conexion getConexion()   
-	{								
+
+
+	public static Conexion getConexion()
+	{
 		if(instancia == null)
 		{
 			instancia = new Conexion();
@@ -35,20 +35,20 @@ public class Conexion
 		return instancia;
 	}
 
-	public Connection getSQLConexion() 
+	public Connection getSQLConexion()
 	{
 		return this.connection;
 	}
-	
+
 	public void cerrarConexion()
 	{
-	    try 
+	    try
 	    {
 	        if (this.connection != null && !this.connection.isClosed()) {
 	            this.connection.close();
 	        }
 	    }
-	    catch (SQLException e) 
+	    catch (SQLException e)
 	    {
 	        e.printStackTrace();
 	    }

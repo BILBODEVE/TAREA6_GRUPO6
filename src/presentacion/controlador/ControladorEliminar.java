@@ -3,7 +3,7 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -38,7 +38,7 @@ public class ControladorEliminar implements ActionListener {
 	}
 
 	private void configurarListeners() {
-		 
+
 		panelEliminarPersona.getListaPersonas().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {

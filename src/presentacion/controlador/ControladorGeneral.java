@@ -1,12 +1,11 @@
 package presentacion.controlador;
 
-import presentancion.vista.VentanaPrincipal;
-
 import java.util.ArrayList;
+
 import javax.swing.DefaultListModel;
+
 import entidad.Persona;
-import negocio.PersonaNegocio;
-import negocioImpl.PersonaNegocioImpl;
+import presentancion.vista.VentanaPrincipal;
 
 public class ControladorGeneral {
 

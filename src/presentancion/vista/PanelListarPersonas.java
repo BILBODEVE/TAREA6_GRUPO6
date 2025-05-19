@@ -1,11 +1,13 @@
 package presentancion.vista;
 
-import javax.swing.JPanel;
+import java.awt.Font;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.DefaultListModel;
-import java.awt.Font;
+
 import entidad.Persona;
 
 public class PanelListarPersonas extends JPanel {
@@ -24,8 +26,8 @@ public class PanelListarPersonas extends JPanel {
 		lblTitulo.setBounds(90, 20, 300, 30);
 		add(lblTitulo);
 
-		modelLista = new DefaultListModel<Persona>();
-		listaPersonas = new JList<Persona>(modelLista);
+		modelLista = new DefaultListModel<>();
+		listaPersonas = new JList<>(modelLista);
 		listaPersonas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 		scroll = new JScrollPane(listaPersonas);

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import dao.PersonaDao;
 import entidad.Persona;
 
@@ -42,6 +43,7 @@ public class PersonaDaoImpl implements PersonaDao {
 		return isInsertExitoso;
 	}
 
+	@Override
 	public boolean update(Persona persona) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -93,6 +95,7 @@ public class PersonaDaoImpl implements PersonaDao {
 		return p;
 	}
 
+	@Override
 	public boolean delete(Persona persona) {
 
 		PreparedStatement statement;
@@ -119,9 +122,10 @@ public class PersonaDaoImpl implements PersonaDao {
 		return isDeleteExitoso;
 	}
 
+	@Override
 	public ArrayList<Persona> obtenerPersonas() {
 		ResultSet resultSet;
-		ArrayList<Persona> personas = new ArrayList<Persona>();
+		ArrayList<Persona> personas = new ArrayList<>();
 
 		try {
 
