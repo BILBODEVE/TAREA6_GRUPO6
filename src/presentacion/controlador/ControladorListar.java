@@ -3,12 +3,8 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import javax.swing.table.DefaultTableModel;
-=======
-
 import javax.swing.DefaultListModel;
->>>>>>> 676eed125df1db7cdc216da2bb4ce619d1daa282
 
 import entidad.Persona;
 import negocio.PersonaNegocio;

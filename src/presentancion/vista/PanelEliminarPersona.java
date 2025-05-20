@@ -36,7 +36,6 @@ public class PanelEliminarPersona extends JPanel {
 		modeloTabla = new DefaultTableModel(new Object[]{"Nombre", "Apellido", "DNI"}, 0) {
 			private static final long serialVersionUID = 1L;
 
-<<<<<<< HEAD
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -50,13 +49,6 @@ public class PanelEliminarPersona extends JPanel {
 		scroll = new JScrollPane(tablaPersonas);
 		scroll.setBounds(25, 50, 388, 142);
 		add(scroll);
-=======
-		listModelPersona = new DefaultListModel<>();
-		listPersonas = new JList<>(listModelPersona);
-		SCPeliminar.setRowHeaderView(listPersonas);
-		listPersonas.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		listPersonas.setLayoutOrientation(JList.VERTICAL);
->>>>>>> 676eed125df1db7cdc216da2bb4ce619d1daa282
 
 		btnEliminarPersona = new JButton("Eliminar");
 		btnEliminarPersona.setBounds(313, 242, 100, 30);

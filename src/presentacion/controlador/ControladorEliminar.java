@@ -1,12 +1,9 @@
 package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import entidad.Persona;
@@ -39,24 +36,7 @@ public class ControladorEliminar {
 	}
 
 	private void configurarListeners() {
-<<<<<<< HEAD
-		// Botón Eliminar
-=======
-
-		panelEliminarPersona.getListaPersonas().addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				if (!e.getValueIsAdjusting()) {
-					Persona personaSeleccionada = panelEliminarPersona.getPersonaSeleccionada();
-					if (personaSeleccionada != null) {
-						panelEliminarPersona.setPersonaSeleccionada(personaSeleccionada);
-					}
-				}
-			}
-		});
-
 		// Btn Eliminar
->>>>>>> 676eed125df1db7cdc216da2bb4ce619d1daa282
 		panelEliminarPersona.getBtnEliminarPersona().addActionListener(e -> {
 			Persona personaSeleccionada = panelEliminarPersona.getPersonaSeleccionada();
 			if (personaSeleccionada == null) {

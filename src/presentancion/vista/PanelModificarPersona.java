@@ -80,11 +80,8 @@ public class PanelModificarPersona extends JPanel {
 		txtDni.setEditable(false);
 		add(txtDni);
 		txtDni.setColumns(10);
-<<<<<<< HEAD
 		txtDni.setEditable(false);
 		txtDni.setBackground(Color.WHITE);
-=======
->>>>>>> 676eed125df1db7cdc216da2bb4ce619d1daa282
 
 		btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(342, 220, 89, 23);
