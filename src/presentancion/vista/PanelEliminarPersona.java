@@ -7,6 +7,9 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import javax.swing.DefaultListModel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 import entidad.Persona;
 
@@ -14,12 +17,11 @@ public class PanelEliminarPersona extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private JList<Persona> listPersonas;
-	private DefaultListModel<Persona> listModelPersona;
-	private JScrollPane SCPeliminar;
+	private JTable tablaPersonas;
+	private DefaultTableModel modeloTabla;
+	private JScrollPane scroll;
 	private JLabel lblEliminarUsuarios;
 	private JButton btnEliminarPersona;
-	private Persona personaSeleccionada;
 
 	public PanelEliminarPersona() {
 		setLayout(null);
@@ -29,42 +31,49 @@ public class PanelEliminarPersona extends JPanel {
 		lblEliminarUsuarios.setBounds(25, 11, 150, 20);
 		add(lblEliminarUsuarios);
 
-		SCPeliminar = new JScrollPane();
-		SCPeliminar.setBounds(25, 50, 245, 140);
-		add(SCPeliminar);
+		// Modelo con columnas y celdas no editables
+		modeloTabla = new DefaultTableModel(new Object[]{"Nombre", "Apellido", "DNI"}, 0) {
+			private static final long serialVersionUID = 1L;
 
-		listModelPersona = new DefaultListModel<Persona>();
-		listPersonas = new JList<Persona>(listModelPersona);
-		SCPeliminar.setRowHeaderView(listPersonas);
-		listPersonas.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		listPersonas.setLayoutOrientation(JList.VERTICAL);
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		tablaPersonas = new JTable(modeloTabla);
+		tablaPersonas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tablaPersonas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // para seleccionar una sola fila
+
+		scroll = new JScrollPane(tablaPersonas);
+		scroll.setBounds(25, 50, 388, 142);
+		add(scroll);
 
 		btnEliminarPersona = new JButton("Eliminar");
-		btnEliminarPersona.setBounds(280, 50, 100, 30);
+		btnEliminarPersona.setBounds(313, 242, 100, 30);
 		add(btnEliminarPersona);
 	}
 
-	public Persona getPersonaSeleccionada() {
-		return listPersonas.getSelectedValue();
+	public JTable getTablaPersonas() {
+		return tablaPersonas;
 	}
 
-	public void setPersonaSeleccionada(Persona persona) {
-		this.personaSeleccionada = persona;
+	public DefaultTableModel getModeloTabla() {
+		return modeloTabla;
 	}
 
 	public JButton getBtnEliminarPersona() {
 		return btnEliminarPersona;
 	}
 
-	public void setBtnEliminarPersona(JButton btnEliminarPersona) {
-		this.btnEliminarPersona = btnEliminarPersona;
-	}
-
-	public JList<Persona> getListaPersonas() {
-		return listPersonas;
-	}
-
-	public DefaultListModel<Persona> getModel() {
-		return this.listModelPersona;
+	public Persona getPersonaSeleccionada() {
+		int fila = tablaPersonas.getSelectedRow();
+		if (fila != -1) {
+			String nombre = (String) modeloTabla.getValueAt(fila, 0);
+			String apellido = (String) modeloTabla.getValueAt(fila, 1);
+			String dni = (String) modeloTabla.getValueAt(fila, 2);
+			return new Persona(nombre, apellido, dni);
+		}
+		return null;
 	}
 }

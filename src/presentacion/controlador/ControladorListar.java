@@ -3,7 +3,7 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
@@ -29,13 +29,13 @@ public class ControladorListar implements ActionListener {
 		});
 	}
 
-	private void cargarPersonas() {
-		DefaultListModel<Persona> modelo = panelListar.getModel();
-		modelo.clear();
+	private void cargarPersonas() {		
+		DefaultTableModel modelo = panelListar.getModel();
+		modelo.setRowCount(0);
 
 		ArrayList<Persona> personas = personaNegocio.obtenerPersonas();
 		for (Persona p : personas) {
-			modelo.addElement(p);
+			modelo.addRow(new Object[] { p.getNombre(), p.getApellido(), p.getDNI() });
 		}
 	}
 

@@ -2,9 +2,9 @@ package presentancion.vista;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.DefaultListModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import entidad.Persona;
 
@@ -12,8 +12,8 @@ public class PanelListarPersonas extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JLabel lblTitulo;
-	private JList<Persona> listaPersonas;
-	private DefaultListModel<Persona> modelLista;
+	private JTable tablaPersonas;
+	private DefaultTableModel modeloTabla;
 	private JScrollPane scroll;
 
 	public PanelListarPersonas() {
@@ -24,20 +24,46 @@ public class PanelListarPersonas extends JPanel {
 		lblTitulo.setBounds(90, 20, 300, 30);
 		add(lblTitulo);
 
-		modelLista = new DefaultListModel<Persona>();
-		listaPersonas = new JList<Persona>(modelLista);
-		listaPersonas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		// Columnas
+		String[] columnas = { "Nombre", "Apellido", "DNI" };
 
-		scroll = new JScrollPane(listaPersonas);
-		scroll.setBounds(30, 70, 350, 180);
+		// Modelo de tabla
+		modeloTabla = new DefaultTableModel(new Object[]{"Nombre", "Apellido", "DNI"}, 0) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+		    public boolean isCellEditable(int row, int column) {
+		        return false; // Desactiva la edición
+		    }
+		};
+		tablaPersonas = new JTable(modeloTabla);
+		tablaPersonas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tablaPersonas.setRowHeight(22);
+
+		scroll = new JScrollPane(tablaPersonas);
+		scroll.setBounds(30, 70, 400, 200);
 		add(scroll);
 	}
 
-	public DefaultListModel<Persona> getModel() {
-		return modelLista;
+	// Método para agregar personas a la tabla
+	public void agregarPersona(String nombre, String apellido, String dni) {
+		modeloTabla.addRow(new Object[]{nombre, apellido, dni});
 	}
 
-	public JList<Persona> getLista() {
-		return listaPersonas;
+	// También podrías usar uno que reciba un objeto Persona
+	public void agregarPersona(Persona p) {
+		modeloTabla.addRow(new Object[]{p.getNombre(), p.getApellido(), p.getDNI()});
+	}
+
+	public void limpiarTabla() {
+		modeloTabla.setRowCount(0);
+	}
+
+	public JTable getTabla() {
+		return tablaPersonas;
+	}
+
+	public DefaultTableModel getModel() {
+		return modeloTabla;
 	}
 }

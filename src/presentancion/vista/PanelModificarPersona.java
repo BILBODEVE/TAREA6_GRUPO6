@@ -1,5 +1,6 @@
 package presentancion.vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -75,14 +76,8 @@ public class PanelModificarPersona extends JPanel {
 		txtDni.setBounds(222, 221, 96, 20);
 		add(txtDni);
 		txtDni.setColumns(10);
-		txtDni.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if (!Character.isDigit(c) || txtDni.getText().length() >= 20) {
-					e.consume();
-				}
-			}
-		});
+		txtDni.setEditable(false);
+		txtDni.setBackground(Color.WHITE);
 
 		btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(342, 220, 89, 23);

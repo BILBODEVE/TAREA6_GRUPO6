@@ -14,7 +14,7 @@ public class Conexion
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver"); 
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpersonas","root","root");
+			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdPersonas?useSSL=false","root","root");
 			//No me borren esto porfa, comentelo porque sino no me funciona. Gracias. 
 			//this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/bdPersonas?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC","root","rootpass");
 			this.connection.setAutoCommit(false);

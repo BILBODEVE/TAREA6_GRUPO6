@@ -7,6 +7,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
@@ -14,7 +15,7 @@ import negocioImpl.PersonaNegocioImpl;
 import presentancion.vista.PanelEliminarPersona;
 import presentancion.vista.VentanaPrincipal;
 
-public class ControladorEliminar implements ActionListener {
+public class ControladorEliminar {
 
 	private VentanaPrincipal ventanaPrincipal;
 	private PanelEliminarPersona panelEliminarPersona;
@@ -33,25 +34,12 @@ public class ControladorEliminar implements ActionListener {
 	}
 
 	public void EventoClickMenu_EliminarPersona(ActionEvent a) {
-		cargarModal();
+		cargarTabla();
 		ventanaPrincipal.getCardLayout().show(ventanaPrincipal.getPanelContenido(), "ELIMINAR");
 	}
 
 	private void configurarListeners() {
-		 
-		panelEliminarPersona.getListaPersonas().addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				if (!e.getValueIsAdjusting()) {
-					Persona personaSeleccionada = panelEliminarPersona.getPersonaSeleccionada();
-					if (personaSeleccionada != null) {
-						panelEliminarPersona.setPersonaSeleccionada(personaSeleccionada);
-					}
-				}
-			}
-		});
-
-		// Btn Eliminar
+		// Botón Eliminar
 		panelEliminarPersona.getBtnEliminarPersona().addActionListener(e -> {
 			Persona personaSeleccionada = panelEliminarPersona.getPersonaSeleccionada();
 			if (personaSeleccionada == null) {
@@ -68,10 +56,20 @@ public class ControladorEliminar implements ActionListener {
 
 		if (exito) {
 			JOptionPane.showMessageDialog(null, "Persona eliminada con éxito.");
-			cargarModal(); // Refrescar la lista
+			cargarTabla(); // Refrescar tabla
 		} else {
 			JOptionPane.showMessageDialog(null, "Error, no se pudo eliminar la persona.", "Error",
 					JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	private void cargarTabla() {
+		listaPersonas = personaNegocio.obtenerPersonas();
+		DefaultTableModel modelo = panelEliminarPersona.getModeloTabla();
+		modelo.setRowCount(0); // Limpia tabla
+
+		for (Persona p : listaPersonas) {
+			modelo.addRow(new Object[]{p.getNombre(), p.getApellido(), p.getDNI()});
 		}
 	}
 
@@ -79,13 +77,5 @@ public class ControladorEliminar implements ActionListener {
 		ventanaPrincipal.setVisible(true);
 	}
 
-	private void cargarModal() {
-		listaPersonas = personaNegocio.obtenerPersonas();
-		ControladorGeneral.cargarModal(listaPersonas, panelEliminarPersona.getModel());
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-	}
 }
+
