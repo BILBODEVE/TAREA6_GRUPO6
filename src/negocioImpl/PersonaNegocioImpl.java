@@ -1,6 +1,7 @@
 package negocioImpl;
 
 import java.util.ArrayList;
+
 import dao.PersonaDao;
 import daoImpl.PersonaDaoImpl;
 import entidad.Persona;
@@ -21,16 +22,17 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 		return estado;
 	}
 
+	@Override
 	public boolean update(Persona persona) {
 
 		boolean estado = false;
-		if (persona.getNombre().trim().length() > 0 && persona.getApellido().trim().length() > 0
-				&& persona.getDNI().trim().length() > 0) {
+		if (persona.getNombre().trim().length() > 0 && persona.getApellido().trim().length() > 0) {
 			estado = pdao.update(persona);
 		}
 		return estado;
 	}
 
+	@Override
 	public boolean delete(Persona persona) {
 		boolean estado = false;
 
@@ -41,6 +43,7 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 		return estado;
 	}
 
+	@Override
 	public boolean verificarPersonaExiste(String dni) {
 
 		PersonaDaoImpl pdi = new PersonaDaoImpl();
@@ -51,6 +54,7 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 		return true;
 	}
 
+	@Override
 	public ArrayList<Persona> obtenerPersonas() {
 		return pdao.obtenerPersonas();
 	}

@@ -3,6 +3,7 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -52,8 +53,8 @@ public class ControladorModificar implements ActionListener {
 		panelModificar.getBtnModificar().addActionListener(e -> {
 			Persona personaSeleccionada = panelModificar.getPersonaSeleccionada();
 			if (personaSeleccionada == null) {
-				JOptionPane.showMessageDialog(null, "Debe seleccionar una persona para modificar.",
-						"Advertencia", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Debe seleccionar una persona para modificar.", "Advertencia",
+						JOptionPane.WARNING_MESSAGE);
 				return;
 			}
 			modificarPersona(personaSeleccionada);
@@ -84,11 +85,11 @@ public class ControladorModificar implements ActionListener {
 		boolean exito = personaNegocio.update(persona);
 
 		if (exito) {
+			limpiarCampos();
 			JOptionPane.showMessageDialog(null, "Persona modificada con éxito.");
 			cargarModal(); // Refrescar lista
 		} else {
-			JOptionPane.showMessageDialog(null, "Error al modificar la persona.", "Error",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error al modificar la persona.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -99,6 +100,12 @@ public class ControladorModificar implements ActionListener {
 
 	public void inicializar() {
 		ventanaPrincipal.setVisible(true);
+	}
+
+	private void limpiarCampos() {
+		this.panelModificar.getTxtNombre().setText("");
+		this.panelModificar.getTxtApellido().setText("");
+		this.panelModificar.getTxtDni().setText("");
 	}
 
 	@Override

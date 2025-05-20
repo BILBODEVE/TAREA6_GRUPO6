@@ -1,11 +1,12 @@
 package presentancion.vista;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class PanelAgregarPersona extends JPanel {
 
@@ -39,6 +40,7 @@ public class PanelAgregarPersona extends JPanel {
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
 				if (!Character.isLetter(c) && c != ' ' || txtNombre.getText().length() >= 45) {
@@ -52,6 +54,7 @@ public class PanelAgregarPersona extends JPanel {
 		add(txtApellido);
 		txtApellido.setColumns(10);
 		txtApellido.addKeyListener(new KeyAdapter() {
+			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
 				if (!Character.isLetter(c) && c != ' ' || txtApellido.getText().length() >= 45) {
@@ -65,6 +68,7 @@ public class PanelAgregarPersona extends JPanel {
 		add(txtDni);
 		txtDni.setColumns(10);
 		txtDni.addKeyListener(new KeyAdapter() {
+			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
 				if (!Character.isDigit(c) || txtDni.getText().length() >= 20) {
